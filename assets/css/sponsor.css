@@ -1,0 +1,38 @@
+.sponsor {
+  overflow: hidden;
+  position: relative;
+padding-top: 20px !important;
+  width: 100%;
+  background: #3E3E3E;
+  border: 1px solid #ddd;
+}
+
+.slide-track {
+  display: flex;
+  width: calc(300px * 8);
+  animation: scroll-left 20s linear infinite;
+}
+
+.slide {
+  width: 250px;
+  flex-shrink: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

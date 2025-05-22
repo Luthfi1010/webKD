@@ -1,0 +1,194 @@
+
+  @import url(https://db.onlinewebfonts.com/c/977ee109edb851f6c4a2c401445c74ee?family=Staccato+222);
+
+    @font-face {
+      font-family: "Staccato 222";
+      src: url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.eot");
+      src: url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.eot?#iefix")format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.svg#Staccato 222")format("svg");
+    }
+		 body {
+            background-color: #e0e5ec;
+            /* Light gray background */
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #3498db;
+            /* Blue background */
+            padding: 15px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-brand span {
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .kedai {
+            font-size: 1.2em;
+            font-family: Rockwell;
+     font-weight: bold;
+
+        }
+
+        .computerworks {
+            font-size: 1em;
+                  font-family: "Staccato 222";
+        }
+
+        .navbar-brand:hover {
+            color: #ecf0f1;
+        }
+
+        /* Table Container Styles */
+        .table-container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 30px;
+            overflow-x: auto;
+            /* Enable horizontal scroll */
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #3498db;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f5f5f5;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button Styles */
+        .btn {
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2px;
+        }
+
+        .btn i {
+            margin-right: 5px;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        /* Image Styles */
+        img {
+            max-width: 80px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            .navbar {
+                padding: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-brand {
+                margin-bottom: 10px;
+            }
+
+            .table-container {
+                padding: 20px;
+            }
+
+            .table th,
+            .table td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Firebase Styles */
+        .firebase-data {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .firebase-data h2 {
+            color: #3498db;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .firebase-data p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }

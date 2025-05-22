@@ -1,0 +1,116 @@
+@import url(https://db.onlinewebfonts.com/c/977ee109edb851f6c4a2c401445c74ee?family=Staccato+222);
+
+    @font-face {
+      font-family: "Staccato 222";
+      src: url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.eot");
+      src: url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.eot?#iefix")format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.svg#Staccato 222")format("svg");
+    }
+
+    .kedai {
+      font-family: Rockwell;
+     font-weight: bold;
+
+    }
+
+    .computerworks {
+      font-family: "Staccato 222";
+
+    }
+
+    h2{
+        margin-top: 0;
+        margin:0;
+    }
+
+
+    .logoo{
+      width: 70px;
+      height: 70px;
+      aspect-ratio: 1/1;
+      margin-right: 20px;
+    }
+
+    body {
+            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            font-weight: bold;
+            color: #174e88ef;
+        }
+
+        .header p {
+            color: #6c757d;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .modal-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+    .container {
+        padding: 10px !important;
+    }
+    .form-container {
+        padding: 10px !important;
+        box-shadow: none !important;
+    }
+    .row.g-3 {
+        flex-direction: column !important;
+    }
+    .col-md-6 {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 15px !important;
+    }
+    .modal-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .header h2 {
+        font-size: 1.3rem;
+    }
+    .header p {
+        font-size: 1rem;
+    }
+    label.form-label {
+        font-size: 0.95rem;
+    }
+    input, select {
+        font-size: 1rem;
+    }
+}

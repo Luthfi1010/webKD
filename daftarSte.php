@@ -27,9 +27,10 @@ include 'config/fungsi.php';
     <div class="container">
         <div class="form-container">
             <div class="header">
-                <h2>Pendaftaran Search To Extract XXI</h2>
                 <p><img src="assets/img/logokedai.png" alt="" class="logoo"><span class="kedai">KeDai</span><span
                         class="computerworks">Computerworks</span></p>
+                <h2>Pendaftaran Search To Extract XXI</h2>
+
             </div>
             <form id="formPendaftaran">
                 <div class="modal-body">
@@ -125,10 +126,15 @@ include 'config/fungsi.php';
                             </select>
                         </div>
 
-                        <!-- Angkatan -->
                         <div class="col-md-6">
-                            <label for="angkatan" class="form-label">Angkatan</label>
-                            <input type="number" class="form-control" id="angkatan" name="angkatan">
+                            <label for="angkatan" class="form-label">Semester</label>
+                            <select class="form-control custom-angkatan" id="angkatan" name="angkatan">
+                                <option selected disabled>Pilih Semester</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                            </select>
                         </div>
 
                         <!-- Instagram -->
@@ -182,7 +188,7 @@ include 'config/fungsi.php';
         import {
             getStorage,
             ref,
-            uploadBytes,
+            uploadBytesResumable,
             getDownloadURL
         } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
 
@@ -249,28 +255,12 @@ include 'config/fungsi.php';
                 }
 
                 // Upload files to Firebase Storage
-                const fotoRef = ref(storage, `foto/${Date.now()}_${fotoFile.name}`);
-                const followRef = ref(storage, `follow/${Date.now()}_${followFile.name}`);
-                const uploads = [
-                    uploadBytes(fotoRef, fotoFile),
-                    uploadBytes(followRef, followFile)
-                ];
-
-                // Upload pembayaran file if provided
-                if (pembayaranFile) {
-                    const pembayaranRef = ref(storage, `pembayaran/${Date.now()}_${pembayaranFile.name}`);
-                    uploads.push(uploadBytes(pembayaranRef, pembayaranFile));
-                }
-
-                const uploadResults = await Promise.all(uploads);
-
-                // Get download URLs
-                const fotoURL = await getDownloadURL(uploadResults[0].ref);
-                const followURL = await getDownloadURL(uploadResults[1].ref);
+                const fotoURL = await uploadFile(fotoFile, 'foto');
+                const followURL = await uploadFile(followFile, 'follow');
                 let pembayaranURL = null;
 
                 if (pembayaranFile) {
-                    pembayaranURL = await getDownloadURL(uploadResults[2].ref);
+                    pembayaranURL = await uploadFile(pembayaranFile, 'pembayaran');
                 }
 
                 // Add file URLs to formData
@@ -301,6 +291,35 @@ include 'config/fungsi.php';
                 });
             }
         });
+
+        async function uploadFile(file, path) {
+            const storageRef = ref(storage, `images/${path}/${file.name}`);
+            const uploadTask = uploadBytesResumable(storageRef, file);
+
+            return new Promise((resolve, reject) => {
+                uploadTask.on('state_changed',
+                    (snapshot) => {
+                        // Observe state change events such as progress, pause, and resume:
+                        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        console.log('Upload is ' + progress + '% done');
+                    },
+                    (error) => {
+                        // Handle unsuccessful uploads
+                        console.error("Error uploading file: ", error);
+                        reject(error);
+                    },
+                    () => {
+                        // Handle successful uploads on complete
+                        // Now you can get the download URL:
+                        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                            console.log('File available at', downloadURL);
+                            resolve(downloadURL);
+                        });
+                    }
+                );
+            });
+        }
 
         // Handle "Kembali" button
         function goBack() {

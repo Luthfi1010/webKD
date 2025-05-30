@@ -1,57 +1,47 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '../../vendor/autoload.php';
 
 use Kreait\Firebase\Factory;
-use Kreait\Firebase\ServiceAccount;
-use Kreait\Firebase\Exception\FirebaseException;
-use Google\Cloud\Core\Exception\NotFoundException;
 
-// Load environment variables
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// Get Firebase credentials (JSON string) and database URI from environment
+$firebaseCredentials = getenv('FIREBASE_CREDENTIALS');
+$databaseUri = getenv('FIREBASE_DATABASE_URI');
 
-// Firebase configuration
-$serviceAccount = ServiceAccount::fromJsonString(getenv('FIREBASE_CREDENTIALS'));
-
-$firebase = (new Factory)
-    ->withServiceAccount($serviceAccount)
-    ->withDatabaseUri($_ENV['FIREBASE_DATABASE_URI'])
-    ->create();
-
-$db = $firebase->getFirestore();
-
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-
-    try {
-        $docRef = $db->collection('ste_2025')->document($id);
-        $docRef->delete();
-
-        echo "<script>
-                alert('Data berhasil dihapus!');
-                window.location.href='index.php';
-              </script>";
-    } catch (NotFoundException $e) {
-        echo "<script>
-                alert('Data tidak ditemukan: " . $e->getMessage() . "');
-                window.location.href='index.php';
-              </script>";
-    } catch (FirebaseException $e) {
-        echo "<script>
-                alert('Terjadi kesalahan pada Firebase: " . $e->getMessage() . "');
-                window.location.href='index.php';
-              </script>";
-    } catch (Exception $e) {
-        echo "<script>
-                alert('Gagal menghapus data: " . $e->getMessage() . "');
-                window.location.href='index.php';
-              </script>";
-    }
-} else {
-    echo "<script>
-            alert('ID tidak valid!');
-            window.location.href='index.php';
-          </script>";
+if (empty($firebaseCredentials) || empty($databaseUri)) {
+  error_log("Firebase credentials or database URI not set in environment variables.");
+  die("Firebase configuration error. Check your environment variables.");
 }
-?>
+
+try {
+  // Simpan JSON ke file sementara
+  $tempJsonFile = sys_get_temp_dir() . '/firebase_credentials.json';
+  file_put_contents($tempJsonFile, $firebaseCredentials);
+
+  // Initialize Firebase using file path
+  $firestore = (new Factory)
+    ->withServiceAccount('firebase_credentials.json')
+    ->createFirestore();
+
+
+  $db = $firebase->getFirestore();
+
+  // Get document ID
+  $id = $_GET['id'] ?? null;
+  if (!$id) {
+    error_log("Invalid or missing document ID.");
+    die("Invalid document ID.");
+  }
+
+  // Delete the document
+  $docRef = $db->collection('ste_2025')->document($id);
+  $docRef->delete();
+
+  // Redirect success
+  header("Location: index.php?delete=success");
+  exit;
+} catch (Exception $e) {
+  error_log("Error deleting document: " . $e->getMessage());
+  header("Location: index.php?delete=error&message=" . urlencode($e->getMessage()));
+  exit;
+}

@@ -421,29 +421,58 @@ require "config/fungsi.php";
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
-
-
-      <div class="img-gallery owl-carousel owl-theme" data-aos="zoom-in-up">
-        <a href="assets/img/gallery/ste.jpg" data-lightbox="gallery" data-title="Search To Extract">
-          <img src="assets/img/gallery/ste.jpg" />
-        </a>
-        <a href="assets/img/gallery/hackathon.png" data-lightbox="gallery" data-title="Hackathon">
-          <img src="assets/img/gallery/hackathon.png" />
-        </a>
-        <a href="assets/img/gallery/pelantikan.png" data-lightbox="gallery" data-title="Pelantikan">
-          <img src="assets/img/gallery/pelantikan.png" />
-        </a>
-        <a href="assets/img/gallery/freerepair.jpg" data-lightbox="gallery" data-title="Free Repair">
-          <img src="assets/img/gallery/freerepair.jpg" />
-        </a>
-        <a href="assets/img/gallery/milad.jpg" data-lightbox="gallery" data-title="Milad">
-          <img src="assets/img/gallery/milad.jpg" />
-        </a>
-
+      <div class="img-gallery owl-carousel owl-theme" id="firebase-gallery" data-aos="zoom-in-up">
+        <!-- Gambar dari Firebase akan dimuat di sini -->
       </div>
-
       <div><br></div>
     </section>
+
+    <script type="module">
+
+      // Ambil data gambar dari koleksi Firestore, misal koleksi 'gallery'
+      async function loadGallery() {
+        const galleryContainer = document.getElementById('firebase-gallery');
+        galleryContainer.innerHTML = '<div>Loading...</div>';
+
+        try {
+          const querySnapshot = await getDocs(collection(db, "gallery"));
+          let html = '';
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            // Pastikan ada field 'url' dan 'title' pada setiap dokumen
+            if (data.url) {
+              html += `
+                <a href="${data.url}" data-lightbox="gallery" data-title="${data.title || ''}">
+                  <img src="${data.url}" alt="${data.title || ''}" />
+                </a>
+              `;
+            }
+          });
+          galleryContainer.innerHTML = html || '<div>Tidak ada gambar.</div>';
+          // Refresh Owl Carousel jika sudah diinisialisasi
+          if (typeof $ !== 'undefined' && typeof $.fn.owlCarousel !== 'undefined') {
+            $(galleryContainer).trigger('destroy.owl.carousel').removeClass('owl-loaded');
+            $(galleryContainer).owlCarousel({
+              items: 3,
+              margin: 10,
+              loop: true,
+              nav: true,
+              dots: true,
+              responsive: {
+                0: { items: 1 },
+                600: { items: 2 },
+                1000: { items: 3 }
+              }
+            });
+          }
+        } catch (error) {
+          galleryContainer.innerHTML = '<div>Gagal memuat gambar.</div>';
+          console.error(error);
+        }
+      }
+
+      loadGallery();
+    </script>
 
     <!-- ======= Testimonials Section ======= -->
 
@@ -490,7 +519,7 @@ require "config/fungsi.php";
           <div class="col-md-4 mb-4">
             <div class="card custom-card shadow-lg border-0 rounded-3">
               <img src="assets/img/CODE.png" class="card-img-top rounded-top" alt="Card image"
-                style="height: 250px; object-fit: cover;">
+                style="height: 400px; object-fit: cover;">
               <div class="card-body text-center">
                 <h5 class="card-title fw-bold">Pendaftaran Search To Extract</h5>
                 <p class="card-text text-muted">

@@ -5,158 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Data</title>
+    <link rel="stylesheet" href="css/edit.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        body {
-            background-color: #121212;
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
 
-        .form-container {
-            background-color: #1e1e1e;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            padding: 40px;
-            width: 800px;
-            max-width: 90%;
-            text-align: left;
-        }
-
-        .form-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .form-header h2 {
-            font-size: 2.5em;
-            color: #64b5f6;
-            margin-bottom: 5px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            color: #90caf9;
-            font-weight: bold;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 6px;
-            background-color: #2c2c2c;
-            color: #fff;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            background-color: #424242;
-        }
-
-        .form-select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 6px;
-            background-color: #2c2c2c;
-            color: #fff;
-            font-size: 1em;
-            appearance: none;
-            /* Remove default arrow */
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M7 10l5 5 5-5z"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 16px;
-        }
-
-        .form-select:focus {
-            outline: none;
-            background-color: #424242;
-        }
-
-        .form-check {
-            margin-bottom: 15px;
-        }
-
-        .form-check-input {
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-
-        .form-check-label {
-            color: #90caf9;
-            vertical-align: middle;
-        }
-
-        .btn-custom {
-            background-color: #64b5f6;
-            color: #121212;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 6px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .btn-custom:hover {
-            background-color: #90caf9;
-        }
-
-        .btn-secondary {
-            background-color: #424242;
-            color: #fff;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 6px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-left: 15px;
-        }
-
-        .btn-secondary:hover {
-            background-color: #616161;
-        }
-
-        img {
-            max-width: 150px;
-            border-radius: 8px;
-            margin-top: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .form-container {
-                padding: 30px;
-            }
-
-            .form-header h2 {
-                font-size: 2em;
-            }
-
-            .btn-custom,
-            .btn-secondary {
-                padding: 12px 25px;
-                font-size: 1em;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -257,10 +109,14 @@
                         </select>
                     </div>
 
-                    <!-- Angkatan -->
                     <div class="col-md-6">
-                        <label for="angkatan" class="form-label">Angkatan</label>
-                        <input type="number" class="form-control" id="angkatan" name="angkatan">
+                        <label for="angkatan" class="form-label">Semester</label>
+                        <select class="form-select" id="angkatan" name="angkatan">
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
                     </div>
 
                     <!-- Instagram -->
@@ -302,7 +158,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
+        import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
 
         // Firebase configuration
         const firebaseConfig = {
@@ -389,6 +245,25 @@
                 const angkatan = document.getElementById('angkatan').value;
                 const instagram = document.getElementById('instagram').value;
 
+                // Handle file uploads
+                const fotoFile = document.getElementById('foto').files[0];
+                const followFile = document.getElementById('follow').files[0];
+                const pembayaranFile = document.getElementById('pembayaran').files[0];
+
+                let fotoURL = document.getElementById('previewFoto').src;
+                let followURL = document.getElementById('previewFollow').src;
+                let pembayaranURL = document.getElementById('previewPembayaran').src;
+
+                if (fotoFile) {
+                    fotoURL = await uploadFile(fotoFile, 'foto');
+                }
+                if (followFile) {
+                    followURL = await uploadFile(followFile, 'follow');
+                }
+                if (pembayaranFile) {
+                    pembayaranURL = await uploadFile(pembayaranFile, 'pembayaran');
+                }
+
                 try {
                     await updateDoc(docRef, {
                         nama: nama,
@@ -404,7 +279,10 @@
                         jurusan: jurusan,
                         semester: semester,
                         angkatan: angkatan,
-                        instagram: instagram
+                        instagram: instagram,
+                        foto: fotoURL,
+                        follow: followURL,
+                        pembayaran: pembayaranURL
                     });
 
                     Swal.fire({
@@ -422,6 +300,33 @@
                 }
             }
         });
+
+        async function uploadFile(file, path) {
+            const storageRef = ref(storage, `images/${path}/${file.name}`);
+            const uploadTask = uploadBytesResumable(storageRef, file);
+
+            return new Promise((resolve, reject) => {
+                uploadTask.on('state_changed',
+                    (snapshot) => {
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        console.log('Upload is ' + progress + '% done');
+                    },
+                    (error) => {
+                        // Handle unsuccessful uploads
+                        console.error("Error uploading file: ", error);
+                        reject(error);
+                    },
+                    () => {
+                        // Handle successful uploads on complete
+                        // Now you can get the download URL:
+                        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                            console.log('File available at', downloadURL);
+                            resolve(downloadURL);
+                        });
+                    }
+                );
+            });
+        }
 
         // Load data on page load
         document.addEventListener("DOMContentLoaded", loadData);

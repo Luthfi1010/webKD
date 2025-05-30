@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<link rel="stylesheet" href="css/index.css">
+
 	<script type="module">
 		import {
 			initializeApp
@@ -61,9 +62,9 @@
 						<td>${data.semester || "-"}</td>
 						<td>${data.angkatan || "-"}</td>
 						<td>${data.instagram || "-"}</td>
-						<td><a href="${data.foto}" target="_blank"><img src="${data.foto}" alt="Foto"></a></td>
-						<td><a href="${data.follow}" target="_blank"><img src="${data.follow}" alt="Bukti Follow"></a></td>
-						<td>${data.pembayaran ? `<a href="${data.pembayaran}" target="_blank"><img src="${data.pembayaran}" alt="Bukti Pembayaran"></a>` : "-"}</td>
+						<td><a href="${data.foto}" target="_blank"><img src="${data.foto}" alt="Foto" style="max-width: 80px;"></a></td>
+						<td><a href="${data.follow}" target="_blank"><img src="${data.follow}" alt="Bukti Follow" style="max-width: 80px;"></a></td>
+						<td>${data.pembayaran ? `<a href="${data.pembayaran}" target="_blank"><img src="${data.pembayaran}" alt="Bukti Pembayaran" style="max-width: 80px;"></a>` : "-"}</td>
 						<td>
 							<a href="edit.php?id=${doc.id}" class="btn btn-primary">
 								<i class="fa fa-pencil"></i> Edit
@@ -87,48 +88,163 @@
 </head>
 
 <body>
-	<!-- Navbar -->
-	<nav class="navbar">
-		<a class="navbar-brand" href="#">
-			<p> <img src="../assets/img/logokedai.png" alt=""><span class="kedai">KeDai</span> <span
-					class="computerworks">Computerworks</span></p>
-		</a>
-	</nav>
+	<!-- Sidebar -->
+	<aside class="sidebar">
+		<a class="sidebar-brand" href="#">
+			<img src="../assets/img/logokedai.png" alt="">
+			<span class="kedai">KeDai</span>
 
-	<!-- Table Container -->
-	<div class="container table-container">
-		<h3 class="text-center mb-4">
-			<i class="fas fa-table me-2"></i>Data Pendaftaran Search To Extract XXI
-		</h3>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>Nama</th>
-					<th>NIM</th>
-					<th>Email</th>
-					<th>No Hp</th>
-					<th>Nomor HP Orang Tua</th>
-					<th>Alamat</th>
-					<th>Tempat Lahir</th>
-					<th>Tanggal Lahir</th>
-					<th>Jenis Kelamin</th>
-					<th>Asal Kampus</th>
-					<th>Jurusan</th>
-					<th>Semester</th>
-					<th>Angkatan</th>
-					<th>Instagram</th>
-					<th>Foto</th>
-					<th>Bukti Follow</th>
-					<th>Bukti Pembayaran</th>
-					<th>Edit</th>
-				</tr>
-			</thead>
-			<tbody id="table-body">
-				<!-- Data akan dimuat di sini -->
-			</tbody>
-		</table>
+			<span class="computerworks">Computerworks</span>
+		</a>
+		<ul class="sidebar-menu">
+			<li>
+				<a href="#">
+					<i class="fas fa-tachometer-alt"></i>
+					<span>Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fas fa-users"></i>
+					<span>Data Pendaftar</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fas fa-images"></i>
+					<span>Galeri</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fas fa-cog"></i>
+					<span>Pengaturan</span>
+				</a>
+			</li>
+		</ul>
+	</aside>
+
+	<!-- Content -->
+	<div class="content">
+		<!-- Navbar
+		<nav class="navbar">
+			<a class="navbar-brand" href="#">
+				<p> <img src="../assets/img/logokedai.png" alt=""><span class="kedai">KeDai</span> <span
+						class="computerworks">Computerworks</span></p>
+			</a>
+		</nav> -->
+
+		<!-- Table Container -->
+		<div class="container table-container">
+			<h3 class="text-center mb-4">
+				<i class="fas fa-table me-2"></i>Data Pendaftaran Search To Extract XXI
+			</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Nama</th>
+						<th>NIM</th>
+						<th>Email</th>
+						<th>No Hp</th>
+						<th>Nomor HP Orang Tua</th>
+						<th>Alamat</th>
+						<th>Tempat Lahir</th>
+						<th>Tanggal Lahir</th>
+						<th>Jenis Kelamin</th>
+						<th>Asal Kampus</th>
+						<th>Jurusan</th>
+						<th>Semester</th>
+						<th>Angkatan</th>
+						<th>Instagram</th>
+						<th>Foto</th>
+						<th>Bukti Follow</th>
+						<th>Bukti Pembayaran</th>
+						<th>Edit</th>
+					</tr>
+				</thead>
+				<tbody id="table-body">
+					<!-- Data akan dimuat di sini -->
+				</tbody>
+			</table>
+		</div>
+
+		<div>
+			<p class="text-center mt-4">
+				<a href="galeri.php" class="btn btn-success">
+					<i class="fa fa-plus"></i> Tambah Data
+				</a>
+			</p>
+		</div>
+
+		<!-- Table Galeri -->
+		<div class="container table-container">
+			<h3 class="text-center mb-4">
+				<i class="fas fa-images me-2"></i>Data Galeri
+			</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Judul</th>
+						<th>Deskripsi</th>
+						<th>Gambar</th>
+						<th>Aksi</th>
+					</tr>
+				</thead>
+				<tbody id="gallery-table-body">
+					<!-- Data galeri akan dimuat di sini -->
+				</tbody>
+			</table>
+		</div>
 	</div>
+	<script type="module">
+		import {
+			initializeApp
+		} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+		import {
+			getFirestore,
+			collection,
+			getDocs
+		} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+		async function loadGallery() {
+			const galleryBody = document.getElementById("gallery-table-body");
+			galleryBody.innerHTML = "";
+			try {
+				const querySnapshot = await getDocs(collection(db, "gallery"));
+				let no = 1;
+				querySnapshot.forEach((doc) => {
+					const data = doc.data();
+					const row = `
+						<tr>
+							<td>${no++}</td>
+							<td>${data.title || "-"}</td>
+							<td>${data.deskripsi || "-"}</td>
+							<td>
+								${data.url ? `<a href="${data.url}" target="_blank"><img src="${data.url}" alt="Gambar" style="max-width: 80px;"></a>` : "-"}
+							</td>
+							<td>
+								<a href="edit_galeri.php?id=${doc.id}" class="btn btn-primary">
+									<i class="fa fa-pencil"></i> Edit
+								</a>
+								<a href="hapus_galeri.php?id=${doc.id}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus gambar ini?');">
+									<i class="fa fa-trash"></i> Hapus
+								</a>
+							</td>
+						</tr>
+					`;
+					galleryBody.innerHTML += row;
+				});
+			} catch (error) {
+				console.error("Error loading gallery: ", error);
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", loadGallery);
+	</script>
+
+
 </body>
 
 </html>

@@ -1,0 +1,30 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore vendor (for PHP/Laravel)
+vendor/
+
+# Ignore environment files
+.env
+.env.*
+
+# Ignore firebase credentials
+admin/firebase_credentials.json
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+tmp/
+temp/
+*.tmp
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project

@@ -270,7 +270,8 @@ require "config/fungsi.php";
       </nav>
 
     </div>
-  </header><!-- End Header -->
+  </header>
+  <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
   <section id="home">
@@ -319,7 +320,7 @@ require "config/fungsi.php";
             <center>
               <a href="assets/img/gallery/pelantikan.png" data-lightbox="pelantikan"
                 data-title="Pelantikan KeDai Computerworks">
-                <img src="assets/img/gallery/pelantikan.png" style="margin-top: 60px;" width="80%" alt="">
+                <img src="img/bph.jpg" style="margin-top: 60px;" width="80%" alt="">
               </a>
 
             </center>
@@ -427,7 +428,7 @@ require "config/fungsi.php";
       <div><br></div>
     </section>
 
-    <script type="module">
+    <!-- <script type="module">
 
       // Ambil data gambar dari koleksi Firestore, misal koleksi 'gallery'
       async function loadGallery() {
@@ -472,7 +473,7 @@ require "config/fungsi.php";
       }
 
       loadGallery();
-    </script>
+    </script> -->
 
     <!-- ======= Testimonials Section ======= -->
 
@@ -652,20 +653,42 @@ require "config/fungsi.php";
   <br>
   <br>
 
-  <!-- <div class="sponsor">
+  <div class="sponsor">
     <div class="slide-track">
-      <div class="slide"><img src="img/imgSponsor/COCACOLA.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/Dove.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/Wings.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/unilever.png" alt=""></div> -->
+      <div class="slide"><img src="img/imgSponsor/bacapesan.jpg" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/bca.jpg" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/ptdika.jpg" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/jprint.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/MATAKITA LOGO FORM 2_COLOR-1.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/rakyatsulsel" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/SNDOMAKASSAR.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/sulselsatu.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/madamaR.jpg" alt=""></div>
 
-  <!-- Ulangi lagi untuk efek tak terputus -->
-  <!-- <div class="slide"><img src="img/imgSponsor/COCACOLA.jpg" alt=""></div>
-  <div class="slide"><img src="img/imgSponsor/Dove.jpg" alt=""></div>
-  <div class="slide"><img src="img/imgSponsor/Wings.png" alt=""></div>
-  <div class="slide"><img src="img/imgSponsor/unilever.png" alt=""></div>
+
+      <!-- Ulangi lagi untuk efek tak terputus -->
+      <div class="slide"><img src="img/imgSponsor/bacapesan.jpg" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/bca.jpg" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/ptdika.jpg" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/jprint.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/MATAKITA LOGO FORM 2_COLOR-1.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/rakyatsulsel" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/SNDOMAKASSAR.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/sulselsatu.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/madamaR.jpg" alt=""></div>
+
+
+      <div class="slide"><img src="img/imgSponsor/bacapesan.jpg" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/bca.jpg" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/ptdika.jpg" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/jprint.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/MATAKITA LOGO FORM 2_COLOR-1.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/rakyatsulsel" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/SNDOMAKASSAR.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/sulselsatu.png" alt=""></div>
+      <div class="slide"><img src="img/imgSponsor/madamaR.jpg" alt=""></div>
+    </div>
   </div>
-  </div> -->
 
 
   <section id="testimonials" class="testimonials">

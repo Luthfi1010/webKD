@@ -15,10 +15,157 @@ include 'config/fungsi.php';
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Pendaftaran Search To Extract XXI</title>
     <style>
+        .payment-info-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
 
+        .payment-info-container h4 {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .payment-details .card {
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .payment-details .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .bank-info {
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .bank-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .bank-logo {
+            max-width: 120px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            filter: grayscale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .bank-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .account-number {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 5px 0;
+            letter-spacing: 1px;
+        }
+
+        .account-name {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .card-title {
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .custom-spinner {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .spinner-ring {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border: 6px solid #fff;
+            border-radius: 50%;
+            border-color: #fff transparent transparent transparent;
+            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+
+        .loading-text {
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .logoo {
+            width: 100px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logoo:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
@@ -27,61 +174,80 @@ include 'config/fungsi.php';
     <div class="container">
         <div class="form-container">
             <div class="header">
-                <p><img src="assets/img/logokedai.png" alt="" class="logoo"><span class="kedai">KeDai</span><span
-                        class="computerworks">Computerworks</span></p>
-                <h2>Pendaftaran Search To Extract XXI</h2>
-
+                <div class="logo-container">
+                    <img src="assets/img/logokedai.png" alt="KeDai Logo" class="logoo">
+                    <img src="assets/img/CODE.png" alt="STE Logo" class="logoo">
+                </div>
+                <h2><span class="kedai">KeDai</span> <span class="computerworks">Computerworks</span></h2>
+                <h3>Pendaftaran Search To Extract XXI</h3>
             </div>
-            <form id="formPendaftaran">
+
+            <form id="formPendaftaran" class="needs-validation" novalidate>
                 <div class="modal-body">
-                    <div class="row g-3">
+                    <div class="row g-4">
                         <!-- Nama -->
                         <div class="col-md-6">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama">
+                            <div class="form-group">
+                                <label for="nama" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama" name="nama" required>
+                            </div>
                         </div>
 
                         <!-- NIM -->
                         <div class="col-md-6">
-                            <label for="nim" class="form-label">NIM</label>
-                            <input type="number" class="form-control" id="nim" name="nim">
+                            <div class="form-group">
+                                <label for="nim" class="form-label">NIM</label>
+                                <input type="number" class="form-control" id="nim" name="nim" required>
+                            </div>
                         </div>
 
                         <!-- Email -->
                         <div class="col-md-6">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
                         </div>
 
                         <!-- No HP -->
                         <div class="col-md-6">
-                            <label for="noHp" class="form-label">No HP</label>
-                            <input type="text" class="form-control" id="noHp" name="noHp">
+                            <div class="form-group">
+                                <label for="noHp" class="form-label">No HP</label>
+                                <input type="text" class="form-control" id="noHp" name="noHp" required>
+                            </div>
                         </div>
 
                         <!-- No Ortu -->
                         <div class="col-md-6">
-                            <label for="noOrtu" class="form-label">No HP Orang Tua</label>
-                            <input type="text" class="form-control" id="noOrtu" name="noOrtu">
+                            <div class="form-group">
+                                <label for="noOrtu" class="form-label">No HP Orang Tua</label>
+                                <input type="text" class="form-control" id="noOrtu" name="noOrtu" required>
+                            </div>
                         </div>
 
                         <!-- Alamat -->
                         <div class="col-md-6">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat">
+                            <div class="form-group">
+                                <label for="alamat" class="form-label">Alamat</label>
+                                <input type="text" class="form-control" id="alamat" name="alamat" required>
+                            </div>
                         </div>
 
                         <!-- Tempat -->
                         <div class="col-md-6">
-                            <label for="tempat" class="form-label">Tempat Lahir</label>
-                            <input type="text" class="form-control" id="tempat" name="tempat"
-                                placeholder="Masukkan tempat lahir">
+                            <div class="form-group">
+                                <label for="tempat" class="form-label">Tempat Lahir</label>
+                                <input type="text" class="form-control" id="tempat" name="tempat"
+                                    placeholder="Masukkan tempat lahir" required>
+                            </div>
                         </div>
 
                         <!-- Tanggal Lahir -->
                         <div class="col-md-6">
-                            <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                            <input type="date" class="form-control" id="tanggalLahir" name="tanggalLahir">
+                            <div class="form-group">
+                                <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
+                                <input type="date" class="form-control" id="tanggalLahir" name="tanggalLahir" required>
+                            </div>
                         </div>
 
                         <!-- Jenis Kelamin -->
@@ -90,12 +256,12 @@ include 'config/fungsi.php';
                             <div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="jenisKelamin"
-                                        id="jenisKelaminLaki" value="Laki-laki">
+                                        id="jenisKelaminLaki" value="Laki-laki" required>
                                     <label class="form-check-label" for="jenisKelaminLaki">Laki-laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="jenisKelamin"
-                                        id="jenisKelaminPerempuan" value="Perempuan">
+                                        id="jenisKelaminPerempuan" value="Perempuan" required>
                                     <label class="form-check-label" for="jenisKelaminPerempuan">Perempuan</label>
                                 </div>
                             </div>
@@ -103,87 +269,154 @@ include 'config/fungsi.php';
 
                         <!-- Asal Kampus -->
                         <div class="col-md-6">
-                            <label for="asalKampus" class="form-label">Asal Kampus</label>
-                            <input type="text" class="form-control" id="asalKampus" name="asalKampus">
+                            <div class="form-group">
+                                <label for="asalKampus" class="form-label">Asal Kampus</label>
+                                <input type="text" class="form-control" id="asalKampus" name="asalKampus" required>
+                            </div>
                         </div>
 
                         <!-- Jurusan -->
                         <div class="col-md-6">
-                            <label for="jurusan" class="form-label">Jurusan</label>
-                            <input type="text" class="form-control" id="jurusan" name="jurusan">
+                            <div class="form-group">
+                                <label for="jurusan" class="form-label">Jurusan</label>
+                                <input type="text" class="form-control" id="jurusan" name="jurusan" required>
+                            </div>
                         </div>
 
                         <!-- Semester -->
                         <div class="col-md-6">
-                            <label for="semester" class="form-label">Semester</label>
-                            <select class="form-control custom-semester" id="semester" name="semester">
-                                <option selected disabled>Pilih Semester</option>
-                                <option value="1">Semester 1</option>
-                                <option value="2">Semester 2</option>
-                                <option value="3">Semester 3</option>
-                                <option value="4">Semester 4</option>
-                                <option value="5">Semester 5</option>
-                            </select>
+                            <div class="form-group">
+                                <label for="semester" class="form-label">Semester</label>
+                                <select class="form-control custom-semester" id="semester" name="semester" required>
+                                    <option selected disabled>Pilih Semester</option>
+                                    <option value="1">Semester 1</option>
+                                    <option value="2">Semester 2</option>
+                                    <option value="3">Semester 3</option>
+                                    <option value="4">Semester 4</option>
+                                    <option value="5">Semester 5</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label for="angkatan" class="form-label">Semester</label>
-                            <select class="form-control custom-angkatan" id="angkatan" name="angkatan">
-                                <option selected disabled>Pilih Semester</option>
-                                <option value="2022">2022</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                            </select>
+                            <div class="form-group">
+                                <label for="angkatan" class="form-label">Angkatan</label>
+                                <select class="form-control custom-angkatan" id="angkatan" name="angkatan" required>
+                                    <option selected disabled>Pilih Angkatan</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                </select>
+                            </div>
                         </div>
 
                         <!-- Instagram -->
                         <div class="col-md-6">
-                            <label for="instagram" class="form-label">Instagram</label>
-                            <input type="text" class="form-control" id="instagram" name="instagram">
+                            <div class="form-group">
+                                <label for="instagram" class="form-label">Instagram</label>
+                                <input type="text" class="form-control" id="instagram" name="instagram" required>
+                            </div>
                         </div>
 
                         <!-- Foto -->
                         <div class="col-md-6">
-                            <label for="foto" class="form-label">Foto</label>
-                            <input type="file" class="form-control" id="foto" name="foto">
+                            <div class="form-group">
+                                <label for="foto" class="form-label">Foto</label>
+                                <input type="file" class="form-control" id="foto" name="foto" required>
+                            </div>
                         </div>
 
                         <!-- Bukti Follow -->
                         <div class="col-md-6">
-                            <label for="follow" class="form-label">Bukti Follow <a
-                                    href="https://www.instagram.com/kd_computerworks/"
-                                    class="ig">@kd_computerworks</a></label>
-                            <input type="file" class="form-control" id="follow" name="follow">
+                            <div class="form-group">
+                                <label for="follow" class="form-label">Bukti Follow <a
+                                        href="https://www.instagram.com/kd_computerworks/"
+                                        class="ig">@kd_computerworks</a></label>
+                                <input type="file" class="form-control" id="follow" name="follow" required>
+                            </div>
                         </div>
 
                         <!-- Pembayaran -->
                         <div class="col-md-6">
-                            <label for="pembayaran" class="form-label">Bukti Pembayaran (Opsional)</label>
-                            <input type="file" class="form-control" id="pembayaran" name="pembayaran">
+                            <div class="form-group">
+                                <label for="pembayaran" class="form-label">Bukti Pembayaran (Opsional)</label>
+                                <input type="file" class="form-control" id="pembayaran" name="pembayaran">
+                            </div>
                         </div>
 
                     </div>
                 </div>
+
+                <!-- Add this before the modal-footer div -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="payment-info-container">
+                            <h4 class="text-center mb-3">Informasi Pembayaran</h4>
+                            <div class="payment-details">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Metode Pembayaran</h5>
+                                                <div class="bank-info">
+                                                    <img src="assets/img/bri-logo.png" alt="Bank BRI"
+                                                        class="bank-logo mb-3">
+                                                    <p class="mb-2"><strong>Bank BRI</strong></p>
+                                                    <p class="account-number">0561 0107 9764 508</p>
+                                                    <p class="account-name">a.n. Graciel Eivrilia Tanan</p>
+                                                    <hr>
+                                                    <p class="mb-2"><strong>Nominal Pembayaran:</strong></p>
+                                                    <p class="text-primary fw-bold fs-5">Rp95.000</p>
+                                                    <p class="mt-3">
+                                                        📌 Silakan transfer sesuai nominal di atas untuk mempermudah
+                                                        proses verifikasi.
+                                                        Setelah melakukan pembayaran, unggah bukti transfer pada
+                                                        formulir yang telah disediakan.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                    <button type="button" class="btn btn-secondary"
-                        onclick="window.location.href='index.php'">Kembali</button>
+                    <button type="submit" class="btn btn-primary">
+                        Daftar
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='index.php'">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 
-
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <div class="custom-spinner">
+                <div class="spinner-ring"></div>
+            </div>
+            <p class="mt-3 loading-text">Sedang memproses pendaftaran...</p>
+        </div>
+    </div>
 
     <script type="module">
         import {
-            initializeApp
+            initializeApps
         } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import {
             getFirestore,
             collection,
-            addDoc
+            addDoc,
+            getDoc,
+            doc,
+            setDoc
         } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
         import {
             getStorage,
@@ -211,39 +444,54 @@ include 'config/fungsi.php';
         document.querySelector('form').addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            // Collect form data
-            const formData = {
-                nama: document.getElementById('nama').value,
-                nim: document.getElementById('nim').value,
-                email: document.getElementById('email').value,
-                noHp: document.getElementById('noHp').value,
-                noOrtu: document.getElementById('noOrtu').value,
-                alamat: document.getElementById('alamat').value,
-                tempat: document.getElementById('tempat').value,
-                tanggalLahir: document.getElementById('tanggalLahir').value,
-                jenisKelamin: document.querySelector('input[name="jenisKelamin"]:checked')?.value,
-                asalKampus: document.getElementById('asalKampus').value,
-                jurusan: document.getElementById('jurusan').value,
-                semester: document.getElementById('semester').value,
-                angkatan: document.getElementById('angkatan').value,
-                instagram: document.getElementById('instagram').value
-            };
-
-            // Validate required fields
-            if (!formData.nama || !formData.nim || !formData.email || !formData.noHp) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Gagal!',
-                    text: 'Mohon lengkapi semua field yang wajib diisi.'
-                });
-                return;
-            }
-
             try {
+                const counterRef = collection(db, 'registration-counter');
+                const counterDoc = await getDoc(doc(counterRef, 'lastRegistrationNumber'));
+
+                let nextNumber = 1;
+                if (counterDoc.exists()) {
+                    nextNumber = counterDoc.data().number + 1;
+                }
+
+                // Generate registration number with format: STE/2025/001
+                const registrationNumber = `${nextNumber.toString().padStart(3, '0')}`;
+                // Show loading overlay
+                document.getElementById('loadingOverlay').style.display = 'flex';
+
+                // Validate required fields
+                const formData = {
+                    noRegistrasi: registrationNumber, // Add registration number to formData
+                    nama: document.getElementById('nama').value,
+                    nim: document.getElementById('nim').value,
+                    email: document.getElementById('email').value,
+                    noHp: document.getElementById('noHp').value,
+                    noOrtu: document.getElementById('noOrtu').value,
+                    alamat: document.getElementById('alamat').value,
+                    tempat: document.getElementById('tempat').value,
+                    tanggalLahir: document.getElementById('tanggalLahir').value,
+                    jenisKelamin: document.querySelector('input[name="jenisKelamin"]:checked')?.value,
+                    asalKampus: document.getElementById('asalKampus').value,
+                    jurusan: document.getElementById('jurusan').value,
+                    semester: document.getElementById('semester').value,
+                    angkatan: document.getElementById('angkatan').value,
+                    instagram: document.getElementById('instagram').value,
+                    createdAt: new Date()
+                };
+
+                if (!formData.nama || !formData.nim || !formData.email || !formData.noHp) {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal!',
+                        text: 'Mohon lengkapi semua field yang wajib diisi.'
+                    });
+                    return;
+                }
+
                 // Handle file uploads
                 const fotoFile = document.getElementById('foto').files[0];
                 const followFile = document.getElementById('follow').files[0];
-                const pembayaranFile = document.getElementById('pembayaran').files[0]; // Optional file
+                const pembayaranFile = document.getElementById('pembayaran').files[0];
 
                 if (!fotoFile || !followFile) {
                     Swal.fire({
@@ -270,19 +518,20 @@ include 'config/fungsi.php';
                     formData.pembayaran = pembayaranURL;
                 }
 
-                // Save data to Firestore
+                // Save registration data
                 await addDoc(collection(db, 'ste_2025'), formData);
 
-                // Show success message
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Berhasil!',
-                    text: 'Pendaftaran berhasil disimpan!'
-                }).then(() => {
-                    // Reset the form
-                    document.querySelector('form').reset();
+                // Update the counter
+                await setDoc(doc(counterRef, 'lastRegistrationNumber'), {
+                    number: nextNumber
                 });
+
+                // Redirect to success page
+                window.location.href = `success.php?reg=${registrationNumber}`;
+
             } catch (error) {
+                // Hide loading overlay on error
+                document.getElementById('loadingOverlay').style.display = 'none';
                 console.error('Error saving data: ', error);
                 Swal.fire({
                     icon: 'error',

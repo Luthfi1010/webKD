@@ -19,6 +19,8 @@ require "config/fungsi.php";
 
   <!--   Css -->
   <link href="https://db.onlinewebfonts.com/c/977ee109edb851f6c4a2c401445c74ee?family=Staccato+222" rel="stylesheet">
+  <link href="https://db.onlinewebfonts.com/c/977ee109edb851f6c4a2c401445c74ee?family=Staccato+222" rel="stylesheet"
+    type="text/css">
   <!-- Font -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet" />
@@ -34,6 +36,7 @@ require "config/fungsi.php";
   <link rel="stylesheet" href="assets/css/lightbox.css">
   <link rel="stylesheet" href="assets/css/sponsor.css">
   <link rel="stylesheet" href="assets/css/galeri.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -43,23 +46,21 @@ require "config/fungsi.php";
     @import url(https://db.onlinewebfonts.com/c/977ee109edb851f6c4a2c401445c74ee?family=Staccato+222);
 
     @font-face {
-      font-family: "Staccato 222";
-      src: url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.eot");
-      src: url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.eot?#iefix")format("embedded-opentype"),
-        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.woff2")format("woff2"),
-        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.woff")format("woff"),
-        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.ttf")format("truetype"),
-        url("https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.svg#Staccato 222")format("svg");
+      font-family: 'Staccato 222';
+      src: url('https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.woff2') format('woff2'),
+        url('https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.woff') format('woff'),
+        url('https://db.onlinewebfonts.com/t/977ee109edb851f6c4a2c401445c74ee.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
     }
 
     .kedai {
-      font-family: Rockwell;
-
+      font-family: 'Rockwell', 'Courier New', 'Georgia', serif;
     }
 
     .computerworks {
-      font-family: "Staccato 222";
-
+      font-family: 'Staccato 222', cursive, sans-serif;
     }
 
     .popup-container {
@@ -122,6 +123,44 @@ require "config/fungsi.php";
       font-size: 12px !important;
       /* Memperkecil ukuran font */
     }
+
+    .sponsors {
+      padding: 60px 0;
+      background: #f3f5fa;
+      overflow: hidden;
+    }
+
+    .sponsor-slider {
+      overflow: hidden;
+      padding: 20px 0;
+    }
+
+    .sponsor-img {
+      max-width: 150px;
+      height: 100px;
+      object-fit: contain;
+      transition: all 0.3s ease-in-out;
+      margin: 0 auto;
+      display: block;
+      vertical-align: middle;
+    }
+
+    .sponsor-img:hover {
+      transform: scale(1.1);
+    }
+
+    .swiper-container {
+      padding: 30px 0;
+      width: 100%;
+    }
+
+    .swiper-slide {
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
   </style>
 
 </head>
@@ -270,8 +309,7 @@ require "config/fungsi.php";
       </nav>
 
     </div>
-  </header>
-  <!-- End Header -->
+  </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
   <section id="home">
@@ -320,7 +358,7 @@ require "config/fungsi.php";
             <center>
               <a href="assets/img/gallery/pelantikan.png" data-lightbox="pelantikan"
                 data-title="Pelantikan KeDai Computerworks">
-                <img src="img/bph.jpg" style="margin-top: 60px;" width="80%" alt="">
+                <img src="assets/img/gallery/pelantikan.png" style="margin-top: 60px;" width="80%" alt="">
               </a>
 
             </center>
@@ -422,58 +460,29 @@ require "config/fungsi.php";
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
-      <div class="img-gallery owl-carousel owl-theme" id="firebase-gallery" data-aos="zoom-in-up">
-        <!-- Gambar dari Firebase akan dimuat di sini -->
+
+
+      <div class="img-gallery owl-carousel owl-theme" data-aos="zoom-in-up">
+        <a href="assets/img/gallery/ste.jpg" data-lightbox="gallery" data-title="Search To Extract">
+          <img src="assets/img/gallery/ste.jpg" />
+        </a>
+        <a href="assets/img/gallery/hackathon.png" data-lightbox="gallery" data-title="Hackathon">
+          <img src="assets/img/gallery/hackathon.png" />
+        </a>
+        <a href="assets/img/gallery/pelantikan.png" data-lightbox="gallery" data-title="Pelantikan">
+          <img src="assets/img/gallery/pelantikan.png" />
+        </a>
+        <a href="assets/img/gallery/freerepair.jpg" data-lightbox="gallery" data-title="Free Repair">
+          <img src="assets/img/gallery/freerepair.jpg" />
+        </a>
+        <a href="assets/img/gallery/milad.jpg" data-lightbox="gallery" data-title="Milad">
+          <img src="assets/img/gallery/milad.jpg" />
+        </a>
+
       </div>
+
       <div><br></div>
     </section>
-
-    <!-- <script type="module">
-
-      // Ambil data gambar dari koleksi Firestore, misal koleksi 'gallery'
-      async function loadGallery() {
-        const galleryContainer = document.getElementById('firebase-gallery');
-        galleryContainer.innerHTML = '<div>Loading...</div>';
-
-        try {
-          const querySnapshot = await getDocs(collection(db, "gallery"));
-          let html = '';
-          querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            // Pastikan ada field 'url' dan 'title' pada setiap dokumen
-            if (data.url) {
-              html += `
-                <a href="${data.url}" data-lightbox="gallery" data-title="${data.title || ''}">
-                  <img src="${data.url}" alt="${data.title || ''}" />
-                </a>
-              `;
-            }
-          });
-          galleryContainer.innerHTML = html || '<div>Tidak ada gambar.</div>';
-          // Refresh Owl Carousel jika sudah diinisialisasi
-          if (typeof $ !== 'undefined' && typeof $.fn.owlCarousel !== 'undefined') {
-            $(galleryContainer).trigger('destroy.owl.carousel').removeClass('owl-loaded');
-            $(galleryContainer).owlCarousel({
-              items: 3,
-              margin: 10,
-              loop: true,
-              nav: true,
-              dots: true,
-              responsive: {
-                0: { items: 1 },
-                600: { items: 2 },
-                1000: { items: 3 }
-              }
-            });
-          }
-        } catch (error) {
-          galleryContainer.innerHTML = '<div>Gagal memuat gambar.</div>';
-          console.error(error);
-        }
-      }
-
-      loadGallery();
-    </script> -->
 
     <!-- ======= Testimonials Section ======= -->
 
@@ -516,11 +525,10 @@ require "config/fungsi.php";
         <div class="row mt-5 justify-content-center">
 
 
-          <!-- Card 1 (Pendaftaran  ) -->
           <div class="col-md-4 mb-4">
             <div class="card custom-card shadow-lg border-0 rounded-3">
               <img src="assets/img/CODE.png" class="card-img-top rounded-top" alt="Card image"
-                style="height: 400px; object-fit: cover;">
+                style="height: 250px; object-fit: cover;">
               <div class="card-body text-center">
                 <h5 class="card-title fw-bold">Pendaftaran Search To Extract</h5>
                 <p class="card-text text-muted">
@@ -534,28 +542,97 @@ require "config/fungsi.php";
         </div>
       </div>
 
+      <!-- ======= Sponsors Section ======= -->
+      <section id="sponsors" class="sponsors">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>SPONSORS</h2>
+            <p>Our Trusted Partners</p>
+          </div>
+
+          <div class="sponsor-slider" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/COCACOLA.jpg" alt="Coca Cola" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/Dove.jpg" alt="Dove" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/Wings.png" alt="Wings" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/sulselsatu.png" alt="Unilever" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/bacapesan.jpg" alt="Unilever" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/bca.jpg" alt="Unilever" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/jprint.png" alt="Unilever" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/madamaR.png" alt="Unilever" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/MATAKITA LOGO FORM 2_COLOR-1.png" alt="Unilever" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/ptdika.jpg" alt="Unilever" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/rakyatsulsel.jpg" alt="Unilever" class="sponsor-img">
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/imgSponsor/SNDOMAKASSAR.png" alt="Unilever" class="sponsor-img">
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      <script>
+        var swiper = new Swiper('.swiper-container', {
+          slidesPerView: 4,
+          spaceBetween: 30,
+          loop: true,
+          autoplay: {
+            delay: 0, // Set to 0 for continuous movement
+            disableOnInteraction: false,
+          },
+          speed: 3000, // Sliding speed in milliseconds
+          breakpoints: {
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 20
+            },
+            480: {
+              slidesPerView: 2,
+              spaceBetween: 20
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 20
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 30
+            }
+          }
+        });
+      </script>
+
+
       <!-- Tambahkan ini sebelum tag penutup body jika belum -->
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-      <!-- Modal untuk Promo -->
-      <div class="modal fade" id="modalPromo" tabindex="-1" aria-labelledby="modalPromoLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalPromoLabel">Promo Spesial KeDai</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>Ikuti promo spesial dari KeDai Computerworks dan dapatkan berbagai keuntungan menarik, mulai dari
-                diskon hingga hadiah menarik untuk Anda!</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
 
       <!-- Custom CSS -->
@@ -630,65 +707,10 @@ require "config/fungsi.php";
       <!-- SweetAlert2 JS -->
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-      <!-- <script>
-        // When the form is submitted, show the SweetAlert
-        document.querySelector('form').addEventListener('submit', function (e) {
-          e.preventDefault(); // Prevent the form from actually submitting
-
-          Swal.fire({
-            title: 'Good job!',
-            text: 'You clicked the button!',
-            icon: 'success'
-          });
-
-          // Optional: You can also clear the form inputs after the alert
-          this.reset();
-        });
-      </script> -->
-
-
-      <!-- End Pendaftaran section -->
   </main><!-- End #main -->
 
   <br>
   <br>
-
-  <div class="sponsor">
-    <div class="slide-track">
-      <div class="slide"><img src="img/imgSponsor/bacapesan.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/bca.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/ptdika.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/jprint.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/MATAKITA LOGO FORM 2_COLOR-1.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/rakyatsulsel" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/SNDOMAKASSAR.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/sulselsatu.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/madamaR.jpg" alt=""></div>
-
-
-      <!-- Ulangi lagi untuk efek tak terputus -->
-      <div class="slide"><img src="img/imgSponsor/bacapesan.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/bca.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/ptdika.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/jprint.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/MATAKITA LOGO FORM 2_COLOR-1.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/rakyatsulsel" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/SNDOMAKASSAR.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/sulselsatu.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/madamaR.jpg" alt=""></div>
-
-
-      <div class="slide"><img src="img/imgSponsor/bacapesan.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/bca.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/ptdika.jpg" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/jprint.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/MATAKITA LOGO FORM 2_COLOR-1.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/rakyatsulsel" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/SNDOMAKASSAR.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/sulselsatu.png" alt=""></div>
-      <div class="slide"><img src="img/imgSponsor/madamaR.jpg" alt=""></div>
-    </div>
-  </div>
 
 
   <section id="testimonials" class="testimonials">

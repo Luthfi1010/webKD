@@ -158,13 +158,240 @@ include 'config/fungsi.php';
         }
 
         .logoo {
-            width: 100px;
+            width: 80px;
             height: auto;
             transition: transform 0.3s ease;
         }
 
         .logoo:hover {
             transform: scale(1.1);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .form-container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            .logo-container {
+                gap: 10px;
+            }
+
+            .logoo {
+                width: 70px;
+            }
+
+            .header h2 {
+                font-size: 1.5rem;
+            }
+
+            .header h3 {
+                font-size: 1.2rem;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-label {
+                font-size: 0.9rem;
+            }
+
+            .form-control {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .payment-info-container {
+                padding: 15px;
+            }
+
+            .bank-info {
+                padding: 15px;
+            }
+
+            .bank-logo {
+                max-width: 100px;
+            }
+
+            .account-number {
+                font-size: 1em;
+            }
+
+            .account-name {
+                font-size: 0.8em;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .modal-footer .btn {
+                width: 100%;
+                margin: 0;
+            }
+
+            .form-check-inline {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .payment-details .col-md-6 {
+                padding: 0 10px;
+            }
+
+            .loading-content {
+                padding: 15px;
+            }
+
+            .loading-text {
+                font-size: 1em;
+            }
+
+            .custom-spinner {
+                width: 60px;
+                height: 60px;
+            }
+
+            .spinner-ring {
+                width: 48px;
+                height: 48px;
+                border-width: 4px;
+            }
+
+            /* Form layout fixes */
+            .row.g-4 {
+                margin: 0;
+            }
+
+            .col-md-6 {
+                width: 100%;
+                padding: 0;
+                margin-bottom: 15px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            /* Payment info container fixes */
+            .payment-details .col-md-6 {
+                width: 100%;
+                padding: 0;
+            }
+
+            .bank-info {
+                margin: 10px 0;
+            }
+
+            /* Button fixes */
+            .modal-footer {
+                padding: 15px 0;
+            }
+
+            .modal-footer .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px;
+            }
+
+            .form-container {
+                padding: 10px;
+                margin: 5px;
+            }
+
+            .logoo {
+                width: 60px;
+            }
+
+            .header h2 {
+                font-size: 1.3rem;
+            }
+
+            .header h3 {
+                font-size: 1rem;
+            }
+
+            .bank-logo {
+                max-width: 80px;
+            }
+
+            .payment-info-container h4 {
+                font-size: 1.1rem;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+
+            .account-number {
+                font-size: 0.9em;
+                letter-spacing: 0.5px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .form-container {
+                padding: 15px;
+                margin: 0;
+            }
+
+            .row.g-4 > * {
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .form-control {
+                font-size: 16px;
+                height: auto;
+                padding: 10px;
+            }
+
+            /* Adjust spacing for radio buttons */
+            .form-check-inline {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            /* File input adjustments */
+            input[type="file"] {
+                font-size: 14px;
+            }
+        }
+
+        /* New styles for form section titles */
+        .form-section-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin: 20px 0 10px;
+            position: relative;
+        }
+
+        .form-section-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(to right, #007bff, #6610f2);
         }
     </style>
 </head>
@@ -182,10 +409,16 @@ include 'config/fungsi.php';
                 <h3>Pendaftaran Search To Extract XXI</h3>
             </div>
 
+            <!-- Update the form structure -->
             <form id="formPendaftaran" class="needs-validation" novalidate>
                 <div class="modal-body">
                     <div class="row g-4">
-                        <!-- Nama -->
+                        <!-- Group related fields -->
+                        <div class="col-12">
+                            <h5 class="form-section-title">Data Pribadi</h5>
+                        </div>
+
+                        <!-- Personal Information -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama" class="form-label">Nama Lengkap</label>
@@ -319,6 +552,12 @@ include 'config/fungsi.php';
                             </div>
                         </div>
 
+                        <!-- Add section titles for better organization -->
+                        <div class="col-12">
+                            <h5 class="form-section-title">Dokumen</h5>
+                        </div>
+
+                        <!-- Document uploads -->
                         <!-- Foto -->
                         <div class="col-md-6">
                             <div class="form-group">

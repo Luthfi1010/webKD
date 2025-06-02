@@ -160,7 +160,6 @@ require "config/fungsi.php";
       justify-content: center;
       text-align: center;
     }
-
   </style>
 
 </head>
@@ -291,7 +290,7 @@ require "config/fungsi.php";
     <div class="container d-flex align-items-center">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html"><img src="assets/img/logokedai.png" width="45"
+        <h1 class="text-light"><a href="index.php"><img src="assets/img/logokedai.png" width="45"
               alt="logo kedai"><span class="kedai" style="margin-left: 20px;"><span
                 style="font-weight: bold;">KeDai</span> <span class="computerworks">Computerworks</span></span></a></h1>
 
@@ -469,14 +468,14 @@ require "config/fungsi.php";
         <a href="assets/img/gallery/hackathon.png" data-lightbox="gallery" data-title="Hackathon">
           <img src="assets/img/gallery/hackathon.png" />
         </a>
-        <a href="assets/img/gallery/pelantikan.png" data-lightbox="gallery" data-title="Pelantikan">
-          <img src="assets/img/gallery/pelantikan.png" />
-        </a>
         <a href="assets/img/gallery/freerepair.jpg" data-lightbox="gallery" data-title="Free Repair">
           <img src="assets/img/gallery/freerepair.jpg" />
         </a>
         <a href="assets/img/gallery/milad.jpg" data-lightbox="gallery" data-title="Milad">
           <img src="assets/img/gallery/milad.jpg" />
+        </a>
+        <a href="assets/img/gallary2025/pengurus.jpg" data-lightbox="gallery" data-title="Pengurus 2025">
+          <img src="assets/img/gallary2025/pengurus.jpg" />
         </a>
 
       </div>
@@ -523,19 +522,20 @@ require "config/fungsi.php";
       </section>
       <div>
         <div class="row mt-5 justify-content-center">
-
-
-          <div class="col-md-4 mb-4">
-            <div class="card custom-card shadow-lg border-0 rounded-3">
+          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="card custom-card shadow-lg border-0 rounded-3" data-aos="zoom-in" data-aos-duration="800"
+              data-aos-delay="300">
               <img src="assets/img/CODE.png" class="card-img-top rounded-top" alt="Card image"
                 style="height: 250px; object-fit: cover;">
               <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Pendaftaran Search To Extract</h5>
-                <p class="card-text text-muted">
+                <h5 class="card-title fw-bold" data-aos="zoom_in" data-aos-delay="500">Pendaftaran Search To Extract
+                </h5>
+                <p class="card-text text-muted" data-aos="zoom_in" data-aos-delay="600">
                   Daftarkan diri Anda. Jangan lewatkan kesempatan untuk mendapatkan
                   wawasan dan pengalaman berharga!
                 </p>
-                <a href="daftarSte.php" class="btn btn-primary px-4">Daftar Sekarang!!!</a>
+                <a href="daftarSte.php" class="btn btn-primary px-4" data-aos="zoom-in" data-aos-delay="700">Daftar
+                  Sekarang!!!</a>
               </div>
             </div>
           </div>
@@ -554,22 +554,10 @@ require "config/fungsi.php";
             <div class="swiper-container">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <img src="img/imgSponsor/COCACOLA.jpg" alt="Coca Cola" class="sponsor-img">
-                </div>
-                <div class="swiper-slide">
-                  <img src="img/imgSponsor/Dove.jpg" alt="Dove" class="sponsor-img">
-                </div>
-                <div class="swiper-slide">
-                  <img src="img/imgSponsor/Wings.png" alt="Wings" class="sponsor-img">
-                </div>
-                <div class="swiper-slide">
                   <img src="img/imgSponsor/sulselsatu.png" alt="Unilever" class="sponsor-img">
                 </div>
                 <div class="swiper-slide">
                   <img src="img/imgSponsor/bacapesan.jpg" alt="Unilever" class="sponsor-img">
-                </div>
-                <div class="swiper-slide">
-                  <img src="img/imgSponsor/bca.jpg" alt="Unilever" class="sponsor-img">
                 </div>
                 <div class="swiper-slide">
                   <img src="img/imgSponsor/jprint.png" alt="Unilever" class="sponsor-img">

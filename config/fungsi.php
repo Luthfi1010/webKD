@@ -13,10 +13,8 @@ if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
 
-// Cek jika form disubmit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    // Mengambil dan memvalidasi data form untuk seminar
     if (isset($_POST['pekerjaan'])) {
         $pekerjaan = htmlspecialchars($_POST['pekerjaan']);
         $nim = isset($_POST['nim']) ? htmlspecialchars($_POST['nim']) : null;

@@ -599,20 +599,29 @@ include 'config/fungsi.php';
                                             <div class="card-body">
                                                 <h5 class="card-title">Metode Pembayaran</h5>
                                                 <div class="bank-info">
-                                                    <img src="assets/img/bri-logo.png" alt="Bank BRI"
+                                                    <img src="assets/img/DANA.png" alt="Bank BRI"
                                                         class="bank-logo mb-3">
-                                                    <p class="mb-2"><strong>Bank BRI</strong></p>
-                                                    <p class="account-number">0561 0107 9764 508</p>
+                                                    <p class="mb-2"><strong>Dana</strong></p>
+                                                    <p class="account-number">081324249809</p>
                                                     <p class="account-name">a.n. Graciel Eivrilia Tanan</p>
                                                     <hr>
                                                     <p class="mb-2"><strong>Nominal Pembayaran:</strong></p>
-                                                    <p class="text-primary fw-bold fs-5">Rp95.000</p>
-                                                    <p class="mt-3">
-                                                        📌 Silakan transfer sesuai nominal di atas untuk mempermudah
-                                                        proses verifikasi.
-                                                        Setelah melakukan pembayaran, unggah bukti transfer pada
-                                                        formulir yang telah disediakan.
-                                                    </p>
+                                                    <p class="text-primary fw-bold fs-5">Rp90.000</p>
+
+                                                    <!-- Add this inside the bank-info div, after the payment instructions -->
+                                                    <div class="contact-info mt-4">
+                                                        <h5 class="mb-3">Narahubung</h5>
+                                                        <div class="contact-buttons">
+                                                            <a href="https://wa.me/6281324249809" class="btn btn-success contact-btn"
+                                                                target="_blank">
+                                                                <i class="fab fa-whatsapp"></i> Graciel (0813-2424-9809)
+                                                            </a>
+                                                            <a href="https://wa.me/62882022422760" class="btn btn-success contact-btn mt-2"
+                                                                target="_blank">
+                                                                <i class="fab fa-whatsapp"></i> Hilmy (0882022422760)
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -647,7 +656,7 @@ include 'config/fungsi.php';
 
     <script type="module">
         import {
-            initializeApps
+            initializeApp
         } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import {
             getFirestore,

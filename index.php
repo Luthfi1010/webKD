@@ -160,6 +160,24 @@ require "config/fungsi.php";
       justify-content: center;
       text-align: center;
     }
+
+    .gallery-img {
+      width: 100%;
+      /* Ensures the image takes the full width of its container */
+      height: 400px;
+      /* Set a fixed height for all images */
+      object-fit: cover;
+      /* Ensures the image maintains its aspect ratio and fills the container */
+      border-radius: 10px;
+      /* Optional: Adds rounded corners to the images */
+      transition: transform 0.3s ease;
+      /* Adds a smooth hover effect */
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+      /* Slight zoom effect on hover */
+    }
   </style>
 
 </head>
@@ -290,9 +308,9 @@ require "config/fungsi.php";
     <div class="container d-flex align-items-center">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.php"><img src="assets/img/logokedai.png" width="45"
-              alt="logo kedai"><span class="kedai" style="margin-left: 20px;"><span
-                style="font-weight: bold;">KeDai</span> <span class="computerworks">Computerworks</span></span></a></h1>
+        <h1 class="text-light"><a href="index.php"><img src="assets/img/logokedai.png" width="45" alt="logo kedai"><span
+              class="kedai" style="margin-left: 20px;"><span style="font-weight: bold;">KeDai</span> <span
+                class="computerworks">Computerworks</span></span></a></h1>
 
       </div>
       <nav class="nav-menu d-none d-lg-block">
@@ -458,28 +476,25 @@ require "config/fungsi.php";
     </section><!-- End Features Section -->
 
     <!-- ======= Gallery Section ======= -->
+    <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
-
-
       <div class="img-gallery owl-carousel owl-theme" data-aos="zoom-in-up">
         <a href="assets/img/gallery/ste.jpg" data-lightbox="gallery" data-title="Search To Extract">
-          <img src="assets/img/gallery/ste.jpg" />
+          <img src="assets/img/gallery/ste.jpg" class="gallery-img" />
         </a>
         <a href="assets/img/gallery/hackathon.png" data-lightbox="gallery" data-title="Hackathon">
-          <img src="assets/img/gallery/hackathon.png" />
+          <img src="assets/img/gallery/hackathon.png" class="gallery-img" />
         </a>
         <a href="assets/img/gallery/freerepair.jpg" data-lightbox="gallery" data-title="Free Repair">
-          <img src="assets/img/gallery/freerepair.jpg" />
+          <img src="assets/img/gallery/freerepair.jpg" class="gallery-img" />
         </a>
         <a href="assets/img/gallery/milad.jpg" data-lightbox="gallery" data-title="Milad">
-          <img src="assets/img/gallery/milad.jpg" />
+          <img src="assets/img/gallery/milad.jpg" class="gallery-img" />
         </a>
         <a href="assets/img/gallary2025/pengurus.jpg" data-lightbox="gallery" data-title="Pengurus 2025">
-          <img src="assets/img/gallary2025/pengurus.jpg" />
+          <img src="assets/img/gallary2025/pengurus.jpg" class="gallery-img" />
         </a>
-
       </div>
-
       <div><br></div>
     </section>
 
@@ -563,7 +578,7 @@ require "config/fungsi.php";
                   <img src="img/imgSponsor/jprint.png" alt="Unilever" class="sponsor-img">
                 </div>
                 <div class="swiper-slide">
-                  <img src="img/imgSponsor/madamaR.png" alt="Unilever" class="sponsor-img">
+                  <img src="img/imgSponsor/madamaR.jpg" alt="Unilever" class="sponsor-img">
                 </div>
                 <div class="swiper-slide">
                   <img src="img/imgSponsor/MATAKITA LOGO FORM 2_COLOR-1.png" alt="Unilever" class="sponsor-img">

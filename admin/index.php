@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['admin_logged_in'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +12,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard Admin</title>
+	<link href="../assets/img/logokedai.png" rel="icon">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<link rel="stylesheet" href="css/index.css">
@@ -16,7 +24,9 @@
 		import {
 			getFirestore,
 			collection,
-			getDocs
+			getDocs,
+			query,
+			orderBy
 		} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
 		// Firebase configuration
@@ -38,7 +48,9 @@
 			tableBody.innerHTML = ""; // Kosongkan tabel sebelum memuat data
 
 			try {
-				const querySnapshot = await getDocs(collection(db, "ste_2025")); // Ganti "ste_2025" dengan nama koleksi Anda
+				// Membuat query untuk mengurutkan data berdasarkan noRegistrasi secara descending
+				const q = query(collection(db, "ste_2025"), orderBy("noRegistrasi", "desc"));
+				const querySnapshot = await getDocs(q);
 				let no = 1;
 
 				querySnapshot.forEach((doc) => {
@@ -65,6 +77,9 @@
 						<td><a href="${data.foto}" target="_blank"><img src="${data.foto}" alt="Foto" style="max-width: 80px;"></a></td>
 						<td><a href="${data.follow}" target="_blank"><img src="${data.follow}" alt="Bukti Follow" style="max-width: 80px;"></a></td>
 						<td>${data.pembayaran ? `<a href="${data.pembayaran}" target="_blank"><img src="${data.pembayaran}" alt="Bukti Pembayaran" style="max-width: 80px;"></a>` : "-"}</td>
+						<td>
+							${data.noRegistrasi || "-"}
+						</td>
 						<td>
 							<a href="edit.php?id=${doc.id}" class="btn btn-primary">
 								<i class="fa fa-pencil"></i> Edit
@@ -160,6 +175,7 @@
 						<th>Foto</th>
 						<th>Bukti Follow</th>
 						<th>Bukti Pembayaran</th>
+						<th>No Registrasi</th>
 						<th>Edit</th>
 					</tr>
 				</thead>
